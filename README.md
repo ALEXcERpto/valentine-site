@@ -25,7 +25,7 @@ A romantic Valentine's Day website where you can ask someone special to be your 
 
 ## Live Demo
 
-Visit the live site: [Coming soon]
+Visit the live site: https://valentine-site-chi-eight.vercel.app
 
 ## Technologies Used
 
