@@ -1,0 +1,464 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #ff69b4 0%, #ff1493 50%, #cc0052 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    color: white;
+}
+
+/* Container */
+.container {
+    text-align: center;
+    padding: 2rem;
+    max-width: 600px;
+    width: 90%;
+    position: relative;
+    z-index: 10;
+}
+
+/* Typography */
+.main-title {
+    font-family: 'Pacifico', cursive;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.95;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Form Styles */
+.valentine-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.input-group {
+    position: relative;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.95);
+    color: #cc0052;
+    font-family: 'Quicksand', sans-serif;
+    outline: none;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus {
+    background: white;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+input[type="text"]::placeholder {
+    color: #ff69b4;
+    opacity: 0.7;
+}
+
+/* Button Styles */
+.btn-primary,
+.btn-yes,
+.btn-no,
+.btn-restart {
+    padding: 1rem 3rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-family: 'Quicksand', sans-serif;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #ff0066, #cc0052);
+    color: white;
+    width: 100%;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+.btn-primary:active {
+    transform: translateY(-1px) scale(1.02);
+}
+
+/* Button Group */
+.button-group {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.btn-yes {
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    color: white;
+    padding: 1.2rem 3.5rem;
+}
+
+.btn-yes:hover {
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 10px 30px rgba(76, 175, 80, 0.5);
+}
+
+.btn-no {
+    background: linear-gradient(135deg, #666, #555);
+    color: white;
+    padding: 1.2rem 3.5rem;
+}
+
+.btn-no:hover {
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 10px 30px rgba(102, 102, 102, 0.5);
+}
+
+.btn-restart {
+    background: linear-gradient(135deg, #ff69b4, #ff1493);
+    color: white;
+    margin-top: 2rem;
+    animation: fadeIn 1s ease-out;
+}
+
+.btn-restart:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(255, 20, 147, 0.5);
+}
+
+/* Response Section */
+.response-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+}
+
+.response-animation {
+    animation: scaleIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    text-align: center;
+}
+
+.flower {
+    font-size: 8rem;
+    animation: rotateFlower 3s ease-in-out infinite;
+    margin-bottom: 1rem;
+}
+
+.emoji-large {
+    font-size: 6rem;
+    margin: 1rem 0;
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+.sad-emoji {
+    animation: shake 0.5s ease-in-out;
+}
+
+.response-title {
+    font-family: 'Pacifico', cursive;
+    font-size: 3rem;
+    margin: 1rem 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.response-message {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    opacity: 0.95;
+}
+
+/* Floating Hearts Background */
+.hearts-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.heart {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: white;
+    opacity: 0.3;
+    animation: float 15s infinite ease-in-out;
+}
+
+.heart::before,
+.heart::after {
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: white;
+    border-radius: 50%;
+}
+
+.heart::before {
+    top: -15px;
+    left: 0;
+}
+
+.heart::after {
+    top: 0;
+    left: 15px;
+}
+
+.heart {
+    transform: rotate(-45deg);
+}
+
+.heart:nth-child(1) {
+    left: 10%;
+    animation-duration: 12s;
+    animation-delay: 0s;
+}
+
+.heart:nth-child(2) {
+    left: 30%;
+    animation-duration: 15s;
+    animation-delay: 2s;
+}
+
+.heart:nth-child(3) {
+    left: 50%;
+    animation-duration: 18s;
+    animation-delay: 4s;
+}
+
+.heart:nth-child(4) {
+    left: 70%;
+    animation-duration: 14s;
+    animation-delay: 1s;
+}
+
+.heart:nth-child(5) {
+    left: 85%;
+    animation-duration: 16s;
+    animation-delay: 3s;
+}
+
+.heart:nth-child(6) {
+    left: 20%;
+    animation-duration: 13s;
+    animation-delay: 5s;
+}
+
+/* Celebration Hearts */
+.celebration-hearts {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 100;
+}
+
+.celebration-heart {
+    position: absolute;
+    bottom: -50px;
+    animation: celebrate 4s ease-in forwards;
+    opacity: 0;
+}
+
+/* Animations */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(100vh) rotate(-45deg) scale(1);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.3;
+    }
+    90% {
+        opacity: 0.3;
+    }
+    50% {
+        transform: translateY(-20vh) rotate(-45deg) scale(1.5);
+        opacity: 0.5;
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes scaleIn {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    25% {
+        transform: scale(1.1);
+    }
+    50% {
+        transform: scale(1);
+    }
+    75% {
+        transform: scale(1.1);
+    }
+}
+
+@keyframes rotateFlower {
+    0%, 100% {
+        transform: rotate(-5deg);
+    }
+    50% {
+        transform: rotate(5deg);
+    }
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-10px);
+    }
+    75% {
+        transform: translateX(10px);
+    }
+}
+
+@keyframes celebrate {
+    0% {
+        bottom: -50px;
+        opacity: 0;
+        transform: translateX(0) rotate(0deg);
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        bottom: 110vh;
+        opacity: 0;
+        transform: translateX(calc(var(--random-x, 0) * 100px)) rotate(360deg);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 2rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .button-group {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .btn-yes,
+    .btn-no {
+        width: 100%;
+        padding: 1rem 2rem;
+    }
+
+    input[type="text"] {
+        font-size: 1rem;
+        padding: 0.8rem 1.2rem;
+    }
+
+    .flower {
+        font-size: 5rem;
+    }
+
+    .emoji-large {
+        font-size: 4rem;
+    }
+
+    .response-title {
+        font-size: 2rem;
+    }
+
+    .response-message {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-title {
+        font-size: 1.5rem;
+    }
+
+    .container {
+        padding: 1rem;
+    }
+}

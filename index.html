@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your Valentine</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="hearts-background">
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+    </div>
+
+    <div class="container">
+        <h1 class="main-title">Choose Your Valentine</h1>
+        <p class="subtitle">Who makes your heart skip a beat?</p>
+
+        <form id="nameForm" class="valentine-form">
+            <div class="input-group">
+                <input
+                    type="text"
+                    id="valentineName"
+                    placeholder="Enter their name..."
+                    autocomplete="off"
+                    required
+                />
+            </div>
+            <button type="submit" class="btn-primary">
+                Next
+            </button>
+        </form>
+    </div>
+
+    <script>
+        // Handle form submission
+        document.getElementById('nameForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const nameInput = document.getElementById('valentineName');
+            const name = nameInput.value.trim();
+
+            if (name) {
+                // Store the name in localStorage
+                localStorage.setItem('valentineName', name);
+
+                // Add a fade-out animation before redirecting
+                document.querySelector('.container').style.animation = 'fadeOut 0.5s ease-out';
+
+                setTimeout(() => {
+                    window.location.href = 'question.html';
+                }, 500);
+            }
+        });
+
+        // Add enter animation on page load
+        window.addEventListener('load', () => {
+            document.querySelector('.container').style.animation = 'fadeIn 0.8s ease-out';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine?</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="hearts-background">
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+    </div>
+
+    <div class="container">
+        <div id="questionSection">
+            <h1 class="main-title" id="questionTitle">
+                Hey <span id="nameDisplay"></span>,<br>
+                Can you be my Valentine?
+            </h1>
+
+            <div class="button-group">
+                <button id="yesBtn" class="btn-yes">
+                    Yes
+                </button>
+                <button id="noBtn" class="btn-no">
+                    No
+                </button>
+            </div>
+        </div>
+
+        <div id="responseSection" class="response-section" style="display: none;">
+            <div id="responseContent"></div>
+        </div>
+
+        <button id="restartBtn" class="btn-restart" style="display: none;">
+            Start Over
+        </button>
+    </div>
+
+    <script>
+        // Get the Valentine's name from localStorage
+        const valentineName = localStorage.getItem('valentineName');
+
+        // If no name found, redirect back to index
+        if (!valentineName) {
+            window.location.href = 'index.html';
+        } else {
+            // Display the name
+            document.getElementById('nameDisplay').textContent = valentineName;
+        }
+
+        // Handle Yes button
+        document.getElementById('yesBtn').addEventListener('click', function() {
+            showResponse('yes');
+        });
+
+        // Handle No button
+        document.getElementById('noBtn').addEventListener('click', function() {
+            showResponse('no');
+        });
+
+        // Handle Restart button
+        document.getElementById('restartBtn').addEventListener('click', function() {
+            localStorage.removeItem('valentineName');
+            window.location.href = 'index.html';
+        });
+
+        function showResponse(answer) {
+            const questionSection = document.getElementById('questionSection');
+            const responseSection = document.getElementById('responseSection');
+            const responseContent = document.getElementById('responseContent');
+            const restartBtn = document.getElementById('restartBtn');
+
+            // Hide question section
+            questionSection.style.display = 'none';
+
+            if (answer === 'yes') {
+                // Create celebration hearts
+                createCelebrationHearts();
+
+                // Show yes response
+                responseContent.innerHTML = `
+                    <div class="response-animation">
+                        <div class="flower">🌹</div>
+                        <h2 class="response-title">This is for you!</h2>
+                        <div class="emoji-large">💕</div>
+                        <p class="response-message">You've made me the happiest!</p>
+                    </div>
+                `;
+            } else {
+                // Show no response
+                responseContent.innerHTML = `
+                    <div class="response-animation sad">
+                        <div class="emoji-large sad-emoji">😢</div>
+                        <h2 class="response-title">Aww...</h2>
+                        <p class="response-message">Maybe next time 💔</p>
+                    </div>
+                `;
+            }
+
+            // Show response section and restart button
+            responseSection.style.display = 'flex';
+            setTimeout(() => {
+                restartBtn.style.display = 'block';
+            }, 2000);
+        }
+
+        function createCelebrationHearts() {
+            const celebrationContainer = document.createElement('div');
+            celebrationContainer.className = 'celebration-hearts';
+            document.body.appendChild(celebrationContainer);
+
+            // Create multiple celebration hearts
+            for (let i = 0; i < 15; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'celebration-heart';
+                heart.textContent = '❤️';
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDelay = Math.random() * 2 + 's';
+                heart.style.fontSize = (Math.random() * 20 + 20) + 'px';
+                celebrationContainer.appendChild(heart);
+            }
+        }
+
+        // Add enter animation on page load
+        window.addEventListener('load', () => {
+            document.querySelector('.container').style.animation = 'fadeIn 0.8s ease-out';
+        });
+    </script>
+</body>
+</html>
